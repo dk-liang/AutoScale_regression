@@ -1,22 +1,23 @@
 from __future__ import division
-import warnings
 
-from fpn_onnx import AutoScale
-from utils import save_checkpoint
-from rate_model import RATEnet
+import math
+import pickle
+import warnings
+from functools import partial
+
+import scipy
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
-from torchvision import datasets, transforms
-import dataset
-import math
-from image import *
-import scipy
+from fpn_onnx import AutoScale
 from scipy.ndimage.filters import gaussian_filter
+from torchvision import transforms
+
+import dataset
 from find_couter import findmaxcontours
-import pickle
-from functools import partial
+from image import *
+from rate_model import RATEnet
+
 warnings.filterwarnings('ignore')
 from config import args
 import  os
@@ -45,7 +46,7 @@ def main():
     pickle.load = partial(pickle.load, encoding="iso-8859-1")
     pickle.Unpickler = partial(pickle.Unpickler, encoding="iso-8859-1")
 
-    if args.pre:
+    if args.pre: 
         if os.path.isfile(args.pre):
             print("=> loading checkpoint '{}'".format(args.pre))
             # checkpoint = torch.load(args.pre, map_location=lambda storage, loc: storage, pickle_module=pickle)
