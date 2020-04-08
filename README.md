@@ -33,10 +33,10 @@ pillow >=7.0.0
 
 
 # Datasets
-For ShanghaiTech
+## For ShanghaiTech
 * Download ShanghaiTech Dataset from [Baidu-Disk](https://pan.baidu.com/s/1nuAYslz) <br />
 * Move ShanghaiTech to ./data
-* Create Directories, final data path structure looks like this:<br />
+* Create Directories, final ShanghaiTech dataset path structure looks like this:<br />
 ```
 |-- data
 |   |-- ShanghaiTech
@@ -63,22 +63,22 @@ For ShanghaiTech
 * Generate target <br />
  ```cd ./data/``` run ```python Distance_generate_Sh.py```<br />
 
-For UCF-QNRF
+## For UCF-QNRF
 * Download UCF-QNRF Dataset from  [Google-Drive](https://drive.google.com/file/d/1fLZdOsOXlv2muNB_bXEW6t-IS9MRziL6/view)
 * Move UCF-QNRF to ./data
-* Create Directories, final data path structure looks like this:<br />
+* Create Directories, final UCF-QNRF dataset path structure looks like this:<br />
 ```
 |-- data          
 |   |-- UCF_QNRF
 |   |   |-- train_data
 |   |   |   |-- images
-|   |   |   |-- gt_distance_map
+|   |   |   |-- gt_density_map
 |   |   |-- test_data
 |   |   |   |-- images
-|   |   |   |-- gt_distance_map
+|   |   |   |-- gt_density_map
 |   |   |-- Train
 |   |   |-- Test
-|   |-- SHanghaitech
+|   |-- SHanghaiTech
 ```
 * Generate target <br />
  ```cd ./data/``` run ```python Distance_generate_QNRF.py```<br />

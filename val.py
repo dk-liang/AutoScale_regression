@@ -33,7 +33,7 @@ def main():
 
     with open(test_file, 'rb') as outfile:
         val_list = np.load(outfile).tolist()
- 
+
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu_id
 
     model = AutoScale().cuda()
