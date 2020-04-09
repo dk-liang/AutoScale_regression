@@ -21,14 +21,14 @@ parser.add_argument('--start_epoch', type=int, default=0,
 # Model specifications
 parser.add_argument('--test_dataset', type=str, default='UCF_QNRF',
                     help='choice train dataset')
-parser.add_argument('--pre', type=str, default='/home/xuwei/projects/synchronous/chenfeng_code/regression_method/model/UCF_QNRF/d_model_best_ucf_96.pth.tar',
+parser.add_argument('--pre', type=str, default='./model/UCF_QNRF/d_model_best_97.4.pth.tar',
                     help='pre-trained model directory')
 
 
 # Optimization specifications
 parser.add_argument('--batch_size', type=int, default=1,
                     help='input batch size for training')
-parser.add_argument('--area_threshold', type=float, default=1.04,
+parser.add_argument('--area_threshold', type=float, default=0.1,
                     help='area  threshold for training')
 parser.add_argument('--lr', type=float, default=1e-5,
                     help='learning rate')
@@ -42,7 +42,7 @@ parser.add_argument('--epochs', type=int, default=2000,
                     help='number of epochs to train')
 parser.add_argument('--seed', type=int, default=1,
                     help='random seed')
-parser.add_argument('--gpu_id', type=str, default='3',
+parser.add_argument('--gpu_id', type=str, default='0',
                     help='gpu id')
 
 

@@ -8,12 +8,12 @@ from functools import partial
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from fpn_onnx import AutoScale
 from scipy.ndimage.filters import gaussian_filter
 from torchvision import transforms
 
 import dataset
 from find_couter import findmaxcontours
+from fpn import AutoScale
 from image import *
 from rate_model import RATEnet
 
@@ -51,14 +51,15 @@ def main():
             # checkpoint = torch.load(args.pre, map_location=lambda storage, loc: storage, pickle_module=pickle)
             checkpoint = torch.load(args.pre)
             model.load_state_dict(checkpoint['pre_state_dict'])
-            # rate_model.load_state_dict(checkpoint['rate_state_dict'])
+            rate_model.load_state_dict(checkpoint['rate_state_dict'])
         else:
             print("=> no checkpoint found at '{}'".format(args.pre))
 
-    torch.save({
-            'state_dict': model.state_dict()
-        }, "./model/UCF_QNRF/model_best.pth")
-    torch.save(model.module, "./model/UCF_QNRF/model_test_all.pt")
+    # torch.save({
+    #         'state_dict': model.state_dict(),
+    #         'rate_state_dict': rate_model.state_dict()
+    #     }, "./model/UCF_QNRF/model_best.pth")
+    # torch.save(model.module, "./model/UCF_QNRF/model_test_all.pt")
 
     validate(val_list, model, rate_model, args)
 
@@ -104,25 +105,22 @@ def validate(Pre_data, model, rate_model, args):
     mse = 0
     original_mae = 0
     visi = []
-    density_threshold = 0.0005
-    rate = torch.ones(1)
 
     for i, (img,target,kpoint,fname,sigma_map) in enumerate(test_loader):
 
         img = img.cuda()
         target = target.cuda()
-        # print(img.shape,target.shape)
-        # d2, d3, d4, d5, d6, fs = model(img, target, refine_flag=True)
-        d6 = model(img)
+
+        d2, d3, d4, d5, d6, fs = model(img, target, refine_flag=True)
 
         density_map = d6.data.cpu().numpy()
         original_count = density_map.sum()
         original_density = d6
-        [x, y, w, h] = findmaxcontours(density_map, density_threshold, fname)
+        [x, y, w, h] = findmaxcontours(density_map, fname, args)
 
-        # rate_feature = F.adaptive_avg_pool2d(fs[:, :, y:(y + h), x:(x + w)], (14, 14))
-        # rate = rate_model(rate_feature).clamp_(0.5, 9)
-        # rate = torch.sqrt(rate)
+        rate_feature = F.adaptive_avg_pool2d(fs[:, :, y:(y + h), x:(x + w)], (14, 14))
+        rate = rate_model(rate_feature).clamp_(0.5, 9)
+        rate = torch.sqrt(rate)
 
         if (float(w * h) / (img.size(2) * img.size(3))) > args.area_threshold:
 
@@ -134,6 +132,7 @@ def validate(Pre_data, model, rate_model, args):
             target_choose = gt_transform(pt2d, [x, y, w, h], rate.item())
 
             target_choose = torch.from_numpy(target_choose).type(torch.FloatTensor).unsqueeze(0)
+
             dd2, dd3, dd4, dd5, dd6 = model(img_transed, target_choose, refine_flag=False)
 
             # dd6[dd6<0]=0

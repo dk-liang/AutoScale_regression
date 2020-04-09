@@ -1,5 +1,6 @@
-import numpy as np
 import os
+
+import numpy as np
 
 shanghaiAtrain_path='/data/weixu/ShanghaiTech_Crowd_Counting_Dataset_baseline/part_A_final/train_data/images/'
 shanghaiAtest_path='/data/weixu/ShanghaiTech_Crowd_Counting_Dataset_baseline/part_A_final/test_data/images/'
@@ -41,8 +42,8 @@ np.save('./ShanghaiB_test.npy', test_list)
 print(len(test_list))
 
 
-Qnrf_train_path='/data/weixu/UCF-QNRF_ECCV18/dataset/train/images/'
-Qnrf_test_path='/data/weixu/UCF-QNRF_ECCV18/dataset/test/images/'
+Qnrf_train_path='/data/weixu/UCF-QNRF_ECCV18/train_data/images/'
+Qnrf_test_path='/data/weixu/UCF-QNRF_ECCV18/test_data/images/'
 
 train_list = []
 for filename in os.listdir(Qnrf_train_path):
@@ -54,7 +55,7 @@ print(len(train_list))
 
 test_list = []
 for filename in os.listdir(Qnrf_test_path):
-    if filename.split('.')[1] == 'jpg':
+    if filename.split('.')[1] == 'bmp':
         test_list.append(Qnrf_test_path+filename)
 test_list.sort()
 np.save('./Qnrf_test.npy', test_list)

@@ -25,7 +25,7 @@ AutoScale_regression
 ```
 # Environment
 python >=3.6 <br />
-pytorch >=0.4 <br />
+pytorch >=1.0 <br />
 opencv-python >=4.0 <br />
 scipy >=1.4.0 <br />
 h5py >=2.10 <br />
@@ -44,24 +44,24 @@ pillow >=7.0.0
 |   |   |   |-- train_data
 |   |   |   |   |-- images
 |   |   |   |   |-- ground_truth
-|   |   |   |   |-- gt_distance_map
+|   |   |   |   |-- gt_density_map
 |   |   |   |-- test_data
 |   |   |   |   |-- images
 |   |   |   |   |-- ground_truth
-|   |   |   |   |-- gt_distance_map
+|   |   |   |   |-- gt_density_map
 |   |   |-- part_B_final  
 |   |   |   |-- train_data
 |   |   |   |   |-- images
 |   |   |   |   |-- ground_truth
-|   |   |   |   |-- gt_distance_map
+|   |   |   |   |-- gt_density_map
 |   |   |   |-- test_data   
 |   |   |   |   |-- images
 |   |   |   |   |-- ground_truth
-|   |   |   |   |-- gt_distance_map           
+|   |   |   |   |-- gt_density_map           
 |   |-- UCF_QNRF 
 ```
 * Generate target <br />
- ```cd ./data/``` run ```python Distance_generate_Sh.py```<br />
+ ```cd ./data/``` run ```python density_generate_Sh.py```<br />
 
 ## For UCF-QNRF
 * Download UCF-QNRF Dataset from  [Google-Drive](https://drive.google.com/file/d/1fLZdOsOXlv2muNB_bXEW6t-IS9MRziL6/view)
@@ -81,11 +81,11 @@ pillow >=7.0.0
 |   |-- SHanghaiTech
 ```
 * Generate target <br />
- ```cd ./data/``` run ```python Distance_generate_QNRF.py```<br />
+ ```cd ./data/``` run ```python density_generate_QNRF.py```<br />
 
 # Model
-* ShanghaiA [link](https://pan.baidu.com/s/1ZVnFug7inbrxqBx5PNcVMQ), passward : b5ir
-* ShanghaiB [link](https://pan.baidu.com/s/1AF27r4zHITesKql9Np3kWA), passward : e2lr
+* ShanghaiA [link](https://pan.baidu.com/s/1dX8rv1YJm8IHRVN8gtP2Kg), passward : m7ve
+* ShanghaiB [link](https://pan.baidu.com/s/1Q5XAs3Dc__1y5nAaZYwgrg), passward : 5hfu
 * UCF-QNRF  [link](www.baidu.com), passward : v8zk
 
 
@@ -93,9 +93,9 @@ pillow >=7.0.0
 * Download Dataset and Model
 * Generate images list, run ```python make_npydata.py  ```
 * Test <br />
-```python val.py  -- test_dataset UCF-QNRF  --pre ./model/UCF-QNRF/model_best.pth.tar```<br />
-```python val.py  -- test_dataset ShanghaiA  --pre ./model/ShanghaiA/model_best.pth.tar```<br />
-```python val.py  -- test_dataset ShanghaiB  --pre ./model/ShanghaiA/model_best.pth.tar```<br />
+```python val.py  -- test_dataset ShanghaiA  --pre ./model/ShanghaiA/model_best.pth```<br />
+```python val.py  -- test_dataset ShanghaiB  --pre ./model/ShanghaiB/model_best.pth```<br />
+```python val.py  -- test_dataset UCF-QNRF  --pre ./model/UCF-QNRF/model_best.pth```<br />
 More config information is  provided in ```config.py  ```
 
 # References

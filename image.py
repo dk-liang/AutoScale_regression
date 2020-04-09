@@ -1,13 +1,10 @@
-import scipy.spatial
-from PIL import Image
-import scipy.io as io
-import scipy
-import numpy as np
 import h5py
+import numpy as np
+from PIL import Image
 
 
 def load_data(img_path,train = True):
-    gt_path = img_path.replace('.jpg','.h5').replace('images','gt_density_map')
+    gt_path = img_path.replace('.jpg','.h5').replace('.bmp','.h5').replace('images','gt_density_map')
     img = Image.open(img_path).convert('RGB')
     gt_file = h5py.File(gt_path)
     target = np.asarray(gt_file['density_map'])
