@@ -50,7 +50,7 @@ def main():
             print("=> loading checkpoint '{}'".format(args.pre))
             # checkpoint = torch.load(args.pre, map_location=lambda storage, loc: storage, pickle_module=pickle)
             checkpoint = torch.load(args.pre)
-            model.load_state_dict(checkpoint['pre_state_dict'])
+            model.load_state_dict(checkpoint['state_dict'])
             rate_model.load_state_dict(checkpoint['rate_state_dict'])
         else:
             print("=> no checkpoint found at '{}'".format(args.pre))

@@ -86,7 +86,6 @@ pillow >=7.0.0
 # Model
 * ShanghaiA [link](https://pan.baidu.com/s/1dX8rv1YJm8IHRVN8gtP2Kg), passward : m7ve
 * ShanghaiB [link](https://pan.baidu.com/s/1Q5XAs3Dc__1y5nAaZYwgrg), passward : 5hfu
-* UCF-QNRF  [link](www.baidu.com), passward : v8zk
 
 
 # Quickly test

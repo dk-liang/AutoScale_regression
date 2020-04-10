@@ -59,7 +59,7 @@ def findmaxcontours(distance_map, fname,args):
     if args.test_dataset == 'ShanghaiA':
         lambada = 4
     else:
-        lambada = 4
+        lambada = 2
 
     threshold = min(255 * (np.mean(distance_map) * lambada ) / np.max(distance_map),150)
     # if threshold==150:
