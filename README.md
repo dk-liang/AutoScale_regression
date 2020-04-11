@@ -1,6 +1,6 @@
 # AutoScale_regression
 * An officical implementation of AutoScale regression-based method, you can find localization-based method from [here](https://github.com/dkliang-hust/AutoScale_localization). 
-* [AutoScale](https://arxiv.org/abs/1912.09632) proposes a simple yet effective Learning to Scale (L2S) module to cope with signiﬁcant scale variations in both localization and regression<br />
+* [AutoScale](https://arxiv.org/abs/1912.09632) leverages a simple yet effective Learning to Scale (L2S) module to cope with signiﬁcant scale variations in both localization and regression<br />
 
 # Structure
 ```
@@ -94,9 +94,11 @@ pillow >=7.0.0
 * Test <br />
 ```python val.py  -- test_dataset ShanghaiA  --pre ./model/ShanghaiA/model_best.pth```<br />
 ```python val.py  -- test_dataset ShanghaiB  --pre ./model/ShanghaiB/model_best.pth```<br />
-```python val.py  -- test_dataset UCF-QNRF  --pre ./model/UCF-QNRF/model_best.pth```<br />
 More config information is  provided in ```config.py  ```
 
+
+# Visualizations
+![avatar](./images/result.png)
 # References
 If you are interested in AutoScale, please cite our work:
 ```

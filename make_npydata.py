@@ -2,8 +2,8 @@ import os
 
 import numpy as np
 
-shanghaiAtrain_path='/data/weixu/ShanghaiTech_Crowd_Counting_Dataset_baseline/part_A_final/train_data/images/'
-shanghaiAtest_path='/data/weixu/ShanghaiTech_Crowd_Counting_Dataset_baseline/part_A_final/test_data/images/'
+shanghaiAtrain_path='./data/ShanghaiTech/part_A_final/train_data/images/'
+shanghaiAtest_path='./data/ShanghaiTech/part_A_final/test_data/images/'
 
 train_list = []
 for filename in os.listdir(shanghaiAtrain_path):
@@ -22,8 +22,8 @@ np.save('./ShanghaiA_test.npy', test_list)
 print(len(test_list))
 
 
-shanghaiBtrain_path='/data/weixu/ShanghaiTech_Crowd_Counting_Dataset_baseline/part_B_final/train_data/images/'
-shanghaiBtest_path='/data/weixu/ShanghaiTech_Crowd_Counting_Dataset_baseline/part_B_final/test_data/images/'
+shanghaiBtrain_path='./data/ShanghaiTech/part_B_final/train_data/images/'
+shanghaiBtest_path='./data/ShanghaiTech/part_B_final/test_data/images/'
 
 train_list = []
 for filename in os.listdir(shanghaiBtrain_path):
@@ -42,8 +42,8 @@ np.save('./ShanghaiB_test.npy', test_list)
 print(len(test_list))
 
 
-Qnrf_train_path='/data/weixu/UCF-QNRF_ECCV18/train_data/images/'
-Qnrf_test_path='/data/weixu/UCF-QNRF_ECCV18/test_data/images/'
+Qnrf_train_path='./data/UCF-QNRF/train_data/images/'
+Qnrf_test_path='./data/UCF-QNRF/test_data/images/'
 
 train_list = []
 for filename in os.listdir(Qnrf_train_path):
@@ -55,7 +55,7 @@ print(len(train_list))
 
 test_list = []
 for filename in os.listdir(Qnrf_test_path):
-    if filename.split('.')[1] == 'bmp':
+    if filename.split('.')[1] == 'jpg':
         test_list.append(Qnrf_test_path+filename)
 test_list.sort()
 np.save('./Qnrf_test.npy', test_list)
