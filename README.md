@@ -23,6 +23,10 @@ AutoScale_regression
 |-- rate_model.py
 |-- val.py        
 ```
+
+# Visualizations
+![avatar](./images/result.png)
+
 # Environment
 python >=3.6 <br />
 pytorch >=1.0 <br />
@@ -97,8 +101,7 @@ pillow >=7.0.0
 More config information is  provided in ```config.py  ```
 
 
-# Visualizations
-![avatar](./images/result.png)
+
 # References
 If you are interested in AutoScale, please cite our work:
 ```
