@@ -8,6 +8,8 @@ AutoScale_regression
 |-- data
 |   |-- ShanghaiTech                         
 |   |-- UCF_QNRF   
+|   |-- density_generate_SH.py
+|   |-- density_generate_QNRF.py
 |-- model             # model path
 |   |-- ShanghaiA          
 |   |-- ShanghaiB               
