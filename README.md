@@ -35,10 +35,9 @@ scipy >=1.4.0 <br />
 h5py >=2.10 <br />
 pillow >=7.0.0
 
-
 # Datasets
 ## For ShanghaiTech
-* Download ShanghaiTech Dataset from [Baidu-Disk](https://pan.baidu.com/s/1nuAYslz) <br />
+* Download ShanghaiTech Dataset from [Baidu-Disk](https://pan.baidu.com/s/15WJ-Mm_B_2lY90uBZbsLwA), passward:cjnx <br />
 * Move ShanghaiTech to ./data
 * Create Directories, final ShanghaiTech dataset path structure looks like this:<br />
 ```
@@ -65,7 +64,7 @@ pillow >=7.0.0
 |   |-- UCF_QNRF 
 ```
 * Generate target <br />
- ```cd ./data/``` run ```python density_generate_Sh.py```<br />
+ ```cd ./data/``` run ```python density_generate_SH.py```<br />
 
 ## For UCF-QNRF
 * Download UCF-QNRF Dataset from  [Google-Drive](https://drive.google.com/file/d/1fLZdOsOXlv2muNB_bXEW6t-IS9MRziL6/view)
@@ -96,8 +95,8 @@ pillow >=7.0.0
 * Download Dataset and Model
 * Generate images list, run ```python make_npydata.py  ```
 * Test <br />
-```python val.py  -- test_dataset ShanghaiA  --pre ./model/ShanghaiA/model_best.pth```<br />
-```python val.py  -- test_dataset ShanghaiB  --pre ./model/ShanghaiB/model_best.pth```<br />
+```python val.py  --test_dataset ShanghaiA  --pre ./model/ShanghaiA/model_best.pth --gpu_id 0```<br />
+```python val.py  --test_dataset ShanghaiB  --pre ./model/ShanghaiB/model_best.pth --gpu_id 0```<br />
 More config information is  provided in ```config.py  ```
 
 

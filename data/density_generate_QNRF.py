@@ -8,7 +8,7 @@ import scipy.io
 import scipy.spatial
 from scipy.ndimage.filters import gaussian_filter
 
-root = '/data/weixu/UCF-QNRF_ECCV18'
+root = './UCF-QNRF'
 img_train_path = root + '/Train/'
 gt_train_path = root + '/Train/'
 img_test_path = root + '/Test/'
@@ -58,81 +58,81 @@ count_min_x = 0
 count_min_y = 0
 start = time.time()
 
-# for k in range(len(img_train)):
-#
-#     Img_data = cv2.imread(img_train_path + img_train[k])
-#     Gt_data = scipy.io.loadmat(gt_train_path + gt_train[k])
-#     rate = 1
-#     flag = 0
-#     if Img_data.shape[1]>=Img_data.shape[0] and Img_data.shape[1] >= 1024:
-#         rate = 1024.0 / Img_data.shape[1]
-#         flag =1
-#     if Img_data.shape[0]>=Img_data.shape[1] and Img_data.shape[0] >= 1024:
-#         rate = 1024.0 / Img_data.shape[0]
-#         flag =1
-#
-#     Img_data = cv2.resize(Img_data,(0,0),fx=rate,fy=rate)
-#
-#     if k%100==0:
-#         print (img_train[k],Img_data.shape)
-#
-#     if Img_data.shape[0]<min_y:
-#         min_y = Img_data.shape[0]
-#         count_min_y = count_min_y+1
-#         print(min_x, min_y, img_train[k])
-#
-#     if Img_data.shape[1]<min_x:
-#         min_x = Img_data.shape[1]
-#         count_min_x =count_min_x
-#         print(min_x,min_y, img_train[k])
-#
-#     x.append(Img_data.shape[1])
-#     y.append(Img_data.shape[0])
-#     #print(img_train[k], min_y, min_x, rate, Img_data.shape)
-#     patch_x = Img_data.shape[1]/2
-#     patch_y = Img_data.shape[0]/2
-#     Gt_data = Gt_data['annPoints']
-#
-#     Gt_data = Gt_data * rate
-#
-#     density_map = np.zeros((Img_data.shape[0], Img_data.shape[1]))
-#
-#     for count in range(0, len(Gt_data)):
-#         if int(Gt_data[count][1]) < Img_data.shape[0] and int(Gt_data[count][0]) < Img_data.shape[1]:
-#             density_map[int(Gt_data[count][1]), int(Gt_data[count][0])] = 1
-#
-#     kpoint = density_map.copy()
-#     density_map = gaussian_filter(density_map, 6)
-#
-#     new_img_path = (save_train_img_path + img_train[k])
-#
-#     mat_path = new_img_path.split('.jpg')[0]
-#     gt_show_path = new_img_path.replace('images', 'gt_show')
-#     h5_path = save_train_gt_path + img_train[k].replace('.jpg','.h5')
-#
-#     pts = np.array(list(zip(np.nonzero(kpoint)[1], np.nonzero(kpoint)[0])))
-#     leafsize = 2048
-#     # build kdtree
-#     tree = scipy.spatial.KDTree(pts.copy(), leafsize=leafsize)
-#     # query kdtree
-#     distances, locations = tree.query(pts, k=2)
-#     sigma_map = np.zeros(kpoint.shape, dtype=np.float32)
-#     # pt2d = np.zeros(k.shape,dtype= np.float32)
-#     for i, pt in enumerate(pts):
-#         sigma = (distances[i][1]) / 2
-#         sigma_map[pt[1], pt[0]] = sigma
-#
-#     with h5py.File(h5_path, 'w') as hf:
-#         hf['density_map'] = density_map
-#         hf['kpoint'] = kpoint
-#         hf['sigma_map'] = sigma_map
-#
-#     cv2.imwrite(new_img_path, Img_data)
-#     density_map = density_map / np.max(density_map) * 255
-#
-#     density_map = density_map.astype(np.uint8)
-#     density_map = cv2.applyColorMap(density_map,2)
-#     cv2.imwrite(gt_show_path, density_map)
+for k in range(len(img_train)):
+
+    Img_data = cv2.imread(img_train_path + img_train[k])
+    Gt_data = scipy.io.loadmat(gt_train_path + gt_train[k])
+    rate = 1
+    flag = 0
+    if Img_data.shape[1]>=Img_data.shape[0] and Img_data.shape[1] >= 1024:
+        rate = 1024.0 / Img_data.shape[1]
+        flag =1
+    if Img_data.shape[0]>=Img_data.shape[1] and Img_data.shape[0] >= 1024:
+        rate = 1024.0 / Img_data.shape[0]
+        flag =1
+
+    Img_data = cv2.resize(Img_data,(0,0),fx=rate,fy=rate)
+
+    if k%100==0:
+        print (img_train[k],Img_data.shape)
+
+    # if Img_data.shape[0]<min_y:
+    #     min_y = Img_data.shape[0]
+    #     count_min_y = count_min_y+1
+    #     print(min_x, min_y, img_train[k])
+    #
+    # if Img_data.shape[1]<min_x:
+    #     min_x = Img_data.shape[1]
+    #     count_min_x =count_min_x
+    #     print(min_x,min_y, img_train[k])
+
+    x.append(Img_data.shape[1])
+    y.append(Img_data.shape[0])
+    #print(img_train[k], min_y, min_x, rate, Img_data.shape)
+    patch_x = Img_data.shape[1]/2
+    patch_y = Img_data.shape[0]/2
+    Gt_data = Gt_data['annPoints']
+
+    Gt_data = Gt_data * rate
+
+    density_map = np.zeros((Img_data.shape[0], Img_data.shape[1]))
+
+    for count in range(0, len(Gt_data)):
+        if int(Gt_data[count][1]) < Img_data.shape[0] and int(Gt_data[count][0]) < Img_data.shape[1]:
+            density_map[int(Gt_data[count][1]), int(Gt_data[count][0])] = 1
+
+    kpoint = density_map.copy()
+    density_map = gaussian_filter(density_map, 6)
+
+    new_img_path = (save_train_img_path + img_train[k])
+
+    mat_path = new_img_path.split('.jpg')[0]
+    gt_show_path = new_img_path.replace('images', 'gt_show')
+    h5_path = save_train_gt_path + img_train[k].replace('.jpg','.h5')
+
+    pts = np.array(list(zip(np.nonzero(kpoint)[1], np.nonzero(kpoint)[0])))
+    leafsize = 2048
+    # build kdtree
+    tree = scipy.spatial.KDTree(pts.copy(), leafsize=leafsize)
+    # query kdtree
+    distances, locations = tree.query(pts, k=2)
+    sigma_map = np.zeros(kpoint.shape, dtype=np.float32)
+    # pt2d = np.zeros(k.shape,dtype= np.float32)
+    for i, pt in enumerate(pts):
+        sigma = (distances[i][1]) / 2
+        sigma_map[pt[1], pt[0]] = sigma
+
+    with h5py.File(h5_path, 'w') as hf:
+        hf['density_map'] = density_map
+        hf['kpoint'] = kpoint
+        hf['sigma_map'] = sigma_map
+
+    cv2.imwrite(new_img_path, Img_data)
+    # density_map = density_map / np.max(density_map) * 255
+    #
+    # density_map = density_map.astype(np.uint8)
+    # density_map = cv2.applyColorMap(density_map,2)
+    # cv2.imwrite(gt_show_path, density_map)
 
 
 
