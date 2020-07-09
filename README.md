@@ -1,6 +1,6 @@
 # AutoScale_regression
 * An officical implementation of AutoScale regression-based method, you can find localization-based method from [here](https://github.com/dkliang-hust/AutoScale_localization). 
-* [AutoScale](https://arxiv.org/abs/1912.09632) leverages a simple yet effective Learning to Scale (L2S) module to cope with signiﬁcant scale variations in both localization and regression<br />
+* [AutoScale](https://arxiv.org/abs/1912.09632) leverages a simple yet effective Learning to Scale (L2S) module to cope with signiﬁcant scale variations in both localization and regression.<br />
 
 # Structure
 ```
@@ -46,13 +46,11 @@ Edit "distance_generate_xx.py" to change the path to your original dataset folde
 * QNRF [link](https://pan.baidu.com/s/1lZ1hZ8Oz-YbKzxokLDw7lg), passward:ebck
 * NWPU [link](https://pan.baidu.com/s/12V599ABxoUAyUAqfi92iYg), passward:p1g1
 * JHU [link](https://pan.baidu.com/s/1iFFv_A0ut_UCnT02yKWsjQ), passward: pqoh
-* ShanghaiA [link](https://pan.baidu.com/s/1dX8rv1YJm8IHRVN8gtP2Kg), passward : m7ve
-* ShanghaiB [link](https://pan.baidu.com/s/1Q5XAs3Dc__1y5nAaZYwgrg), passward : 5hfu
-
+* ShanghaiA [link](https://pan.baidu.com/s/10i1X5T-zScTOdEKXgH-E5Q), passward : tqmp
+* ShanghaiB [link](https://pan.baidu.com/s/1JRdB5sewWifZrAVx6x7ASg), passward : mj13
 # Quickly test
-* ```git clone https://github.com/dkliang-hust/AutoScale.git```<br />
+* ```git clone https://github.com/dkliang-hust/AutoScale_regression.git```<br />
   ```cd AutoScale```<br />
-  ```chmod -R 777 ./count_localminma```<br />
 
 * Download Dataset and Model
 
@@ -60,7 +58,7 @@ Edit "distance_generate_xx.py" to change the path to your original dataset folde
 
 * Generate images list
 
-  Edit "make_npydata.py" to change the path to your original dataset folder.
+  Edit "make_npydata.py" to change the path to your original dataset folder.<br />
   Run ```python make_npydata.py  ```.
 
 * Test <br />
