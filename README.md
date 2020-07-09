@@ -5,15 +5,8 @@
 # Structure
 ```
 AutoScale_regression
-|-- data
-|   |-- ShanghaiTech                         
-|   |-- UCF_QNRF   
-|   |-- density_generate_SH.py
-|   |-- density_generate_QNRF.py
-|-- model             # model path
-|   |-- ShanghaiA          
-|   |-- ShanghaiB               
-|   |-- UCF_QNRF   
+|-- data            # generate target
+|-- model           # model path 
 |-- README.md       # README
 |-- centerloss.py           
 |-- config.py          
@@ -23,7 +16,7 @@ AutoScale_regression
 |-- image.py
 |-- make_npydata.py
 |-- rate_model.py
-|-- val.py        
+|-- val.py          
 ```
 
 # Visualizations
@@ -38,70 +31,48 @@ h5py >=2.10 <br />
 pillow >=7.0.0
 
 # Datasets
-## For ShanghaiTech
-* Download ShanghaiTech Dataset from [Baidu-Disk](https://pan.baidu.com/s/15WJ-Mm_B_2lY90uBZbsLwA), passward:cjnx <br />
-* Move ShanghaiTech to ./data
-* Create Directories, final ShanghaiTech dataset path structure looks like this:<br />
-```
-|-- data
-|   |-- ShanghaiTech
-|   |   |-- part_A_final
-|   |   |   |-- train_data
-|   |   |   |   |-- images
-|   |   |   |   |-- ground_truth
-|   |   |   |   |-- gt_density_map
-|   |   |   |-- test_data
-|   |   |   |   |-- images
-|   |   |   |   |-- ground_truth
-|   |   |   |   |-- gt_density_map
-|   |   |-- part_B_final  
-|   |   |   |-- train_data
-|   |   |   |   |-- images
-|   |   |   |   |-- ground_truth
-|   |   |   |   |-- gt_density_map
-|   |   |   |-- test_data   
-|   |   |   |   |-- images
-|   |   |   |   |-- ground_truth
-|   |   |   |   |-- gt_density_map           
-|   |-- UCF_QNRF 
-```
-* Generate target <br />
- ```cd ./data/``` run ```python density_generate_SH.py```<br />
-
-## For UCF-QNRF
+* Download ShanghaiTech dataset from [Baidu-Disk](https://pan.baidu.com/s/15WJ-Mm_B_2lY90uBZbsLwA), passward:cjnx <br />
 * Download UCF-QNRF Dataset from  [Google-Drive](https://drive.google.com/file/d/1fLZdOsOXlv2muNB_bXEW6t-IS9MRziL6/view)
-* Move UCF-QNRF to ./data
-* Create Directories, final UCF-QNRF dataset path structure looks like this:<br />
-```
-|-- data          
-|   |-- UCF_QNRF
-|   |   |-- train_data
-|   |   |   |-- images
-|   |   |   |-- gt_density_map
-|   |   |-- test_data
-|   |   |   |-- images
-|   |   |   |-- gt_density_map
-|   |   |-- Train
-|   |   |-- Test
-|   |-- SHanghaiTech
-```
-* Generate target <br />
- ```cd ./data/``` run ```python density_generate_QNRF.py```<br />
+* Download JHU-CROWD ++  dataset from [here](http://www.crowd-counting.com/)
+* Download NWPU-CROWD dataset from [Baidu-Disk](https://pan.baidu.com/s/1hzGULEkg2FyW8oHSGmxgiA), passward:jm2v
+
+# Generate target
+```cd data```<br />
+Edit "distance_generate_xx.py" to change the path to your original dataset folder.
+```python density_generate_xx.py```
+“xx” means the dataset name, including sh, jhu, qnrf, and  nwpu.
 
 # Model
+* QNRF [link](https://pan.baidu.com/s/1lZ1hZ8Oz-YbKzxokLDw7lg), passward:ebck
+* NWPU [link](https://pan.baidu.com/s/12V599ABxoUAyUAqfi92iYg), passward:p1g1
+* JHU [link](https://pan.baidu.com/s/1iFFv_A0ut_UCnT02yKWsjQ), passward: pqoh
 * ShanghaiA [link](https://pan.baidu.com/s/1dX8rv1YJm8IHRVN8gtP2Kg), passward : m7ve
 * ShanghaiB [link](https://pan.baidu.com/s/1Q5XAs3Dc__1y5nAaZYwgrg), passward : 5hfu
 
-
 # Quickly test
+* ```git clone https://github.com/dkliang-hust/AutoScale.git```<br />
+  ```cd AutoScale```<br />
+  ```chmod -R 777 ./count_localminma```<br />
+
 * Download Dataset and Model
-* Generate images list, run ```python make_npydata.py  ```
+
+* Generate target
+
+* Generate images list
+
+  Edit "make_npydata.py" to change the path to your original dataset folder.
+  Run ```python make_npydata.py  ```.
+
 * Test <br />
+```python val.py  --test_dataset qnrf  --pre ./model/QNRF/model_best.pth --gpu_id 0```<br />
+```python val.py  --test_dataset jhu  --pre ./model/JHU/model_best.pth --gpu_id 0```<br />
+```python val.py  --test_dataset nwpu  --pre ./model/NWPU/model_best.pth --gpu_id 0```<br />
 ```python val.py  --test_dataset ShanghaiA  --pre ./model/ShanghaiA/model_best.pth --gpu_id 0```<br />
 ```python val.py  --test_dataset ShanghaiB  --pre ./model/ShanghaiB/model_best.pth --gpu_id 0```<br />
 More config information is  provided in ```config.py  ```
 
-
+# Training
+coming soon.
 
 # References
 If you are interested in AutoScale, please cite our work:

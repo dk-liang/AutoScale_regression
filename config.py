@@ -19,9 +19,9 @@ parser.add_argument('--start_epoch', type=int, default=0,
                     help='start epoch for training')
 
 # Model specifications
-parser.add_argument('--test_dataset', type=str, default='ShanghaiB',
+parser.add_argument('--test_dataset', type=str, default='NWPU',
                     help='choice train dataset')
-parser.add_argument('--pre', type=str, default='./model/ShanghaiA/model_best.pth',
+parser.add_argument('--pre', type=str, default='./model/NWPU/model_best_94.0.pth',
                     help='pre-trained model directory')
 
 
@@ -42,7 +42,7 @@ parser.add_argument('--epochs', type=int, default=2000,
                     help='number of epochs to train')
 parser.add_argument('--seed', type=int, default=1,
                     help='random seed')
-parser.add_argument('--gpu_id', type=str, default='3',
+parser.add_argument('--gpu_id', type=str, default='0',
                     help='gpu id')
 
 
