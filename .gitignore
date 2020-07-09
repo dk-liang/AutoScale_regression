@@ -1,0 +1,6 @@
+
+model/ShanghaiA/model_best.pth
+model/ShanghaiB/model_best.pth
+*.tar
+model/UCF_QNRF/model_test.onnx
+model/UCF_QNRF/model_best.pth
