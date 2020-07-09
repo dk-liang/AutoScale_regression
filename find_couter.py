@@ -56,26 +56,27 @@ def findmaxcontours(distance_map, fname,args):
     # distance_map = distance_map.astype(np.uint8)
     # print(np.mean(distance_map),np.max(distance_map))
     original_density_map = distance_map
-    if args.test_dataset == 'ShanghaiA':
+    if args.test_dataset == 'ShanghaiA' :
         lambada = 4
     else:
         lambada = 2
 
-    threshold = min(255 * (np.mean(distance_map) * lambada ) / np.max(distance_map),150)
+    threshold = min(255 * (np.mean(distance_map) * 4 ) / np.max(distance_map),150)
     # if threshold==150:
     #     print ("threshold is 150")
 
     distance_map = 255 * distance_map / np.max(distance_map)
     distance_map = distance_map[0][0]
     distance_map[distance_map < 0] = 0
-    distance_map[0,0]=255
+    # distance_map[0,0]=255
+
 
     img = distance_map.astype(np.uint8)
 
 
     ret, binary = cv2.threshold(img, threshold, 255, cv2.THRESH_BINARY)
     cv2.imwrite("./middle_process/binary2.jpg", binary)
-    binary, contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     # print(len(contours))
     list_index = []
     for i in range(len(contours)):

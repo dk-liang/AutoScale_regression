@@ -8,7 +8,7 @@ import scipy.io
 import scipy.spatial
 from scipy.ndimage.filters import gaussian_filter
 
-root = './UCF-QNRF'
+root = '/data/weixu/UCF-QNRF_ECCV18/'
 img_train_path = root + '/Train/'
 gt_train_path = root + '/Train/'
 img_test_path = root + '/Test/'
@@ -128,11 +128,11 @@ for k in range(len(img_train)):
         hf['sigma_map'] = sigma_map
 
     cv2.imwrite(new_img_path, Img_data)
-    # density_map = density_map / np.max(density_map) * 255
-    #
-    # density_map = density_map.astype(np.uint8)
-    # density_map = cv2.applyColorMap(density_map,2)
-    # cv2.imwrite(gt_show_path, density_map)
+    density_map = density_map / np.max(density_map) * 255
+
+    density_map = density_map.astype(np.uint8)
+    density_map = cv2.applyColorMap(density_map,2)
+    cv2.imwrite(gt_show_path, density_map)
 
 
 
@@ -173,7 +173,7 @@ for k in range(len(img_test)):
 
     for count in range(0, len(Gt_data)):
         if int(Gt_data[count][1]) < Img_data.shape[0] and int(Gt_data[count][0]) < Img_data.shape[1]:
-            density_map[int(Gt_data[count][1]), int(Gt_data[count][0])] = 1
+            density_map[int(Gt_data[count][1]), int(Gt_data[count][0])] += 1
     kpoint = density_map.copy()
     density_map = gaussian_filter(density_map, 6)
 
@@ -205,7 +205,7 @@ for k in range(len(img_test)):
         hf['sigma_map'] = sigma_map
 
     print(len(Gt_data), np.sum(density_map))
-    cv2.imwrite(new_img_path.replace('jpg','bmp'), Img_data)
+    cv2.imwrite(new_img_path, Img_data)
     # density_map = density_map / np.max(density_map) * 255
     # density_map = density_map.astype(np.uint8)
     # density_map = cv2.applyColorMap(density_map,2)
