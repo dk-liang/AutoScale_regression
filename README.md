@@ -34,12 +34,12 @@ pillow >=7.0.0
 * Download ShanghaiTech dataset from [Baidu-Disk](https://pan.baidu.com/s/15WJ-Mm_B_2lY90uBZbsLwA), passward:cjnx <br />
 * Download UCF-QNRF Dataset from  [Google-Drive](https://drive.google.com/file/d/1fLZdOsOXlv2muNB_bXEW6t-IS9MRziL6/view)
 * Download JHU-CROWD ++  dataset from [here](http://www.crowd-counting.com/)
-* Download NWPU-CROWD dataset from [Baidu-Disk](https://pan.baidu.com/s/1hzGULEkg2FyW8oHSGmxgiA), passward:jm2v
-
+* Download NWPU-CROWD dataset from [Baidu-Disk](https://pan.baidu.com/s/1Rm1WTBcz3h6k5ZvLnCCiMA), passward:9z97
 # Generate target
 ```cd data```<br />
-Edit "distance_generate_xx.py" to change the path to your original dataset folder.
+Edit "distance_generate_xx.py" to change the path to your original dataset folder.<br />
 ```python density_generate_xx.py```
+
 “xx” means the dataset name, including sh, jhu, qnrf, and  nwpu.
 
 # Model

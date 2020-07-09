@@ -21,7 +21,7 @@ parser.add_argument('--start_epoch', type=int, default=0,
 # Model specifications
 parser.add_argument('--test_dataset', type=str, default='NWPU',
                     help='choice train dataset')
-parser.add_argument('--pre', type=str, default='./model/NWPU/model_best_94.0.pth',
+parser.add_argument('--pre', type=str, default='./model/NWPU/model_best.pth',
                     help='pre-trained model directory')
 
 
