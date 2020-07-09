@@ -11,8 +11,9 @@ import scipy.spatial
 from matplotlib import pyplot as plt
 from scipy.ndimage.filters import gaussian_filter
 
-#now generate the ShanghaiA's ground truth
-root = './ShanghaiTech/'
+
+'''please set your dataset path'''
+root = '/home/dkliang/projects/synchronous/ShanghaiTech/'
 
 part_A_train = os.path.join(root,'part_A_final/train_data','images')
 part_A_test = os.path.join(root,'part_A_final/test_data','images')
@@ -20,6 +21,32 @@ part_B_train = os.path.join(root,'part_B_final/train_data','images')
 part_B_test = os.path.join(root,'part_B_final/test_data','images')
 
 path_sets = [part_A_train,part_A_test,part_B_train,part_B_test]
+
+if not os.path.exists(part_A_train.replace('images','gt_density_map') ):
+	os.makedirs(part_A_train.replace('images','gt_density_map'))
+
+if not os.path.exists(part_A_test.replace('images','gt_density_map')):
+	os.makedirs(part_A_test.replace('images','gt_density_map'))
+
+if not os.path.exists(part_A_train.replace('images','gt_show_density')):
+	os.makedirs(part_A_train.replace('images','gt_show_density'))
+
+if not os.path.exists(part_A_test.replace('images','gt_show_density')):
+	os.makedirs(part_A_test.replace('images','gt_show_density'))
+
+if not os.path.exists(part_B_train.replace('images','gt_density_map')):
+	os.makedirs(part_B_train.replace('images','gt_density_map'))
+
+if not os.path.exists(part_B_test.replace('images','gt_density_map')):
+	os.makedirs(part_B_test.replace('images','gt_density_map'))
+
+if not os.path.exists(part_B_train.replace('images','gt_show_density')):
+	os.makedirs(part_B_train.replace('images','gt_show_density'))
+
+if not os.path.exists(part_B_test.replace('images','gt_show_density')):
+	os.makedirs(part_B_test.replace('images','gt_show_density'))
+
+
 
 img_paths = []
 for path in path_sets:
@@ -52,7 +79,7 @@ for img_path in img_paths:
         kernel_size = 8
 
     k = gaussian_filter(k, kernel_size)
-    print(img_path, k.sum(),len(gt),img.shape,k.shape)
+
     '''generate sigma'''
     pts = np.array(list(zip(np.nonzero(kpoint)[1], np.nonzero(kpoint)[0])))
     leafsize = 2048
@@ -73,3 +100,4 @@ for img_path in img_paths:
             hf['density_map'] = k
             hf['sigma_map'] = sigma
 
+    print(img_path, kernel_size)

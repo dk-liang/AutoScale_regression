@@ -10,7 +10,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from scipy.ndimage.filters import gaussian_filter
 from torchvision import transforms
-
+import scipy
 import dataset
 from find_couter import findmaxcontours
 from fpn import AutoScale
@@ -25,11 +25,15 @@ torch.cuda.manual_seed(args.seed)
 def main():
 
     if args.test_dataset == 'ShanghaiA':
-        test_file = './ShanghaiA_test.npy'
+        test_file = './npydata/ShanghaiA_test.npy'
     elif args.test_dataset == 'ShanghaiB':
-        test_file = './ShanghaiB_test.npy'
-    elif args.test_dataset =='UCF_QNRF':
-        test_file = './Qnrf_test.npy'
+        test_file = './npydata/ShanghaiB_test.npy'
+    elif args.test_dataset == 'UCF_QNRF':
+        test_file = './npydata/qnrf_test.npy'
+    elif args.test_dataset == 'JHU':
+        test_file = './npydata/jhu_val.npy'
+    elif args.test_dataset == 'NWPU':
+        test_file = './npydata/nwpu_val_1024.npy'
 
     with open(test_file, 'rb') as outfile:
         val_list = np.load(outfile).tolist()
@@ -55,11 +59,6 @@ def main():
         else:
             print("=> no checkpoint found at '{}'".format(args.pre))
 
-    # torch.save({
-    #         'state_dict': model.state_dict(),
-    #         'rate_state_dict': rate_model.state_dict()
-    #     }, "./model/UCF_QNRF/model_best.pth")
-    # torch.save(model.module, "./model/UCF_QNRF/model_test_all.pt")
 
     validate(val_list, model, rate_model, args)
 
@@ -145,7 +144,7 @@ def validate(Pre_data, model, rate_model, args):
 
         mae += abs(count - target.data.cpu().numpy().sum())
         mse += abs(count - target.data.cpu().numpy().sum()) * abs(count - target.data.cpu().numpy().sum())
-        original_mae += abs(original_count - target.data.cpu().numpy().sum())
+
 
         if i % args.print_freq == 0:
             print(fname[0], 'rate {rate:.3f}'.format(rate=rate.item()), 'gt', int(target.data.cpu().numpy().sum()),
@@ -153,8 +152,8 @@ def validate(Pre_data, model, rate_model, args):
 
     mae = mae / len(test_loader)
     mse = math.sqrt(mse/len(test_loader))
-    original_mae = original_mae / len(test_loader)
-    print(' \n* MAE {mae:.3f}\n'.format(mae=mae), '* MSE {mse:.3f}\n'.format(mse=mse),'* ORI_MAE {ori_mae:.3f}\n'.format(ori_mae=original_mae))
+
+    print(' \n* MAE {mae:.3f}\n'.format(mae=mae), '* MSE {mse:.3f}\n'.format(mse=mse))
 
     return mae, original_mae, visi
 
