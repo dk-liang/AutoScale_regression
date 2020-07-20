@@ -98,6 +98,6 @@ for img_path in img_paths:
 
             hf['kpoint'] = kpoint
             hf['density_map'] = k
-            hf['sigma_map'] = sigma
+            hf['sigma_map'] = sigma_map
 
     print(img_path, kernel_size)
