@@ -49,7 +49,7 @@ Edit "distance_generate_xx.py" to change the path to your original dataset folde
 * ShanghaiA [link](https://pan.baidu.com/s/10i1X5T-zScTOdEKXgH-E5Q), passward : tqmp
 * ShanghaiB [link](https://pan.baidu.com/s/1JRdB5sewWifZrAVx6x7ASg), passward : mj13
 # Quickly test
-* ```git clone https://github.com/dkliang-hust/AutoScale_regression.git```<br />
+* ```git clone https://github.com/dk-liang/AutoScale_regression.git```<br />
   ```cd AutoScale```<br />
 
 * Download Dataset and Model
