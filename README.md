@@ -31,10 +31,10 @@ h5py >=2.10 <br />
 pillow >=7.0.0
 
 # Datasets
-* Download ShanghaiTech dataset from [Baidu-Disk](https://pan.baidu.com/s/15WJ-Mm_B_2lY90uBZbsLwA), passward:cjnx <br />
+* Download ShanghaiTech dataset from [Baidu-Disk](https://pan.baidu.com/s/15WJ-Mm_B_2lY90uBZbsLwA), passward:cjnx ; or [Google-Drive](https://drive.google.com/file/d/1CkYppr_IqR1s6wi53l2gKoGqm7LkJ-Lc/view?usp=sharing)
 * Download UCF-QNRF Dataset from  [Google-Drive](https://www.crcv.ucf.edu/data/ucf-qnrf/)
 * Download JHU-CROWD ++  dataset from [here](http://www.crowd-counting.com/)
-* Download NWPU-CROWD dataset from [Baidu-Disk](https://pan.baidu.com/s/1Rm1WTBcz3h6k5ZvLnCCiMA), passward:9z97
+* Download NWPU-CROWD dataset from [Baidu-Disk](https://pan.baidu.com/s/1Rm1WTBcz3h6k5ZvLnCCiMA), passward:9z97; or [Google-Drive](https://drive.google.com/file/d/14m2Y6A9_Vq8yUcKvozXGBP4Gwoz3Dotx/view?usp=sharing)
 # Generate target
 ```cd data```<br />
 Edit "distance_generate_xx.py" to change the path to your original dataset folder.<br />
@@ -43,11 +43,7 @@ Edit "distance_generate_xx.py" to change the path to your original dataset folde
 “xx” means the dataset name, including sh, jhu, qnrf, and  nwpu.
 
 # Model
-* QNRF [link](https://pan.baidu.com/s/1lZ1hZ8Oz-YbKzxokLDw7lg), passward:ebck
-* NWPU [link](https://pan.baidu.com/s/12V599ABxoUAyUAqfi92iYg), passward:p1g1
-* JHU [link](https://pan.baidu.com/s/1iFFv_A0ut_UCnT02yKWsjQ), passward: pqoh
-* ShanghaiA [link](https://pan.baidu.com/s/10i1X5T-zScTOdEKXgH-E5Q), passward : tqmp
-* ShanghaiB [link](https://pan.baidu.com/s/1JRdB5sewWifZrAVx6x7ASg), passward : mj13
+Download the pretrained model from [Baidu-Disk](https://pan.baidu.com/s/1kAhMdfVCO6A4SgrYi0_sog), passward:9qfc ; or [Google-Drive](https://drive.google.com/drive/folders/1GPUG-JDIlEyFqOnsvDa71fjxiOl55x_Z?usp=sharing)
 # Quickly test
 * ```git clone https://github.com/dk-liang/AutoScale_regression.git```<br />
   ```cd AutoScale```<br />
